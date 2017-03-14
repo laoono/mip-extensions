@@ -168,6 +168,15 @@ define(function (require) {
         });
     };
 
+    var iaskListCtrl = function () {
+        var $btn = $('[btn-iask-list]');
+        var $ele = $('[btn-iask-list-dispaly]');
+
+        $btn.on('click', function () {
+            $ele.show();
+        });
+    };
+
     // build 方法，元素插入到文档时执行，仅会执行一次
     customElem.prototype.build = function () {
         // this.element 可取到当前实例对应的 dom 元素
@@ -175,6 +184,9 @@ define(function (require) {
         opt.lazy === 'false' && init(opt);
         // 导航菜单的显隐
         menuCtrl();
+
+        //更多回答显隐控制
+        iaskListCtrl();
     };
     // 第一次进入可视区回调,只会执行一次，做懒加载，利于网页速度
     customElem.prototype.firstInviewCallback = function () {

@@ -24,7 +24,8 @@ mip-fh-async 用来支持整站全网异步接口渲染组件
     </span>
 </button>
 
-<mip-fh-async id="mip-fh-async" url="https://partners.fh21.com.cn/partners/showcodejsonp?callback=?" data='{"ab": "test"}' block="div#xxoo" active-class="active"></mip-fh-async>
+<mip-fh-async id="mip-fh-async" url="https://partners.fh21.com.cn/partners/showcodejsonp?callback=?" 
+data='{"ab": "test", "url": "http://fh21.com.cn", "http://": "september"}' block="div#xxoo" active-class="active"></mip-fh-async>
 
 <div id="xxoo"></div>
 ```

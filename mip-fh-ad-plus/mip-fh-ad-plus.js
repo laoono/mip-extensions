@@ -44,7 +44,6 @@ define(function (require) {
 
         var FhAdPutNum = $plus.length;
 
-
         if (combo) {
             query.pid = getPids($plus).join(',');
             query.uid = getUids($plus).join(',');
