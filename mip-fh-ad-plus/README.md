@@ -6,7 +6,7 @@ mip-fh-ad-plus 用来支持整站页面的直投广告显示
 ----|----
 类型|广告
 支持布局|N/A
-所需脚本|https://mipcache.bdstatic.com/extensions/platform/v1/mip-fh-async/mip-fh-ad-plus.js
+所需脚本|https://mipcache.bdstatic.com/extensions/platform/v1/mip-fh-ad-plus/mip-fh-ad-plus.js
 
 ## 示例
 
@@ -18,7 +18,7 @@ mip-fh-ad-plus 用来支持整站页面的直投广告显示
     </style>
     
     <meta name="fh-ad-keywords" content="射精,阳痿,早泄">
-    <meta name="fh-ad-ip" content="true">
+    <meta name="ip-enabled" content="true">
     
     <div class="dn" fh-ad-empty-show>没有直销广告，才会显示</div>
     

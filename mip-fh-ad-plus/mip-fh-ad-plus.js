@@ -19,7 +19,7 @@ define(function (require) {
     // 页面广告参数
     var $adKeywords = $('meta[name="fh-ad-keywords"]');
     // 是否开启ip调用
-    var $ipEnabled = $('meta[name="fh-ad-ip"]');
+    var $ipEnabled = $('meta[name="ip-enabled"]');
     var ipEnabled = $ipEnabled.attr('content') || '';
     ipEnabled = ipEnabled.length && ipEnabled !== 'false' || false;
 
