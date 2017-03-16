@@ -13,9 +13,7 @@ mip-fh-async 用来支持整站全网异步接口渲染组件
 
 ```html
 <style mip-custom>
-    .active {
-        color: red;
-    }
+    .active { color: red; }
 </style>
 
 <button on="tap:mip-fh-async.send">
@@ -25,9 +23,18 @@ mip-fh-async 用来支持整站全网异步接口渲染组件
 </button>
 
 <mip-fh-async id="mip-fh-async" url="https://partners.fh21.com.cn/partners/showcodejsonp?callback=?" 
-data='{"ab": "test", "url": "http://fh21.com.cn", "http://": "september"}' block="div#xxoo" active-class="active"></mip-fh-async>
+data='{"ab": "test", "url": "http://fh21.com.cn", "http://": "september"}' block="div#xxoo" active-class="active" 
+jsonp="callback">
+    <template type="mip-mustache">
+        <h2>
+            {{errmsg}}
+        </h2>
+    </template>
+</mip-fh-async>
 
-<div id="xxoo"></div>
+<div id="xxoo">这些内容将会会替换</div>
+
+<script defer async src="/local-extension-loader/mip-mustache.js"></script>
 ```
 
 ## 属性
@@ -46,11 +53,12 @@ data='{"ab": "test", "url": "http://fh21.com.cn", "http://": "september"}' block
 
 ### block
 
-说明：需要填充渲染的容器，合法的zepto选择器
+说明：需要填充渲染的模板容器，合法的dom选择器
 必填：否
 类型：string
 
 ### active-class
-说明：为事件绑定节点元素添加请求活跃中的class
+说明：为绑定事件的节点元素添加请求活跃状态下的class
 必填：否
 类型：string
+
