@@ -28,7 +28,7 @@ define(function (require) {
         var block = element.getAttribute('block');
         var activeClass = element.getAttribute('active-class');
         var template = element.getAttribute('template');
-        var jsonp = element.getAttribute('jsonp')
+        var jsonp = element.getAttribute('jsonp');
 
         // 元素参数
         var opt = {
