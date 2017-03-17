@@ -29,7 +29,7 @@ define(function (require) {
     // 直投广告请求url
     var adUrl = 'https://partners.fh21.com.cn/partners/showcodejsonp?callback=?';
     // 获取ip请求url;
-    var ipUrl = '//114.215.69.247:82/getArea.php?callback=?&t=' + new Date().getTime();
+    var ipUrl = 'https://ips.fh21.com.cn/getArea.php?callback=?&t=' + new Date().getTime();
 
     // 初始化直 投广告
     var init = function (opt) {
@@ -139,7 +139,7 @@ define(function (require) {
             // 遍历直投广告ID
             $.each(data, function (k, v) {
 
-                // 判断是否触发一次性所有广告位请求
+                // 获取投放直销广告的节点
                 element = $('mip-fh-ad-plus[fh-ad-pid="' + k + '"]');
                 uid = element.attr('fh-ad-uid');
 
