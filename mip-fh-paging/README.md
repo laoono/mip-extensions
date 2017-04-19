@@ -44,11 +44,9 @@ mip-fh-paging 用来支持整站分页交互组件
   <script type="application/json">
     {
       "prev": {
-        "type": 1,
         "url": "http://m.dev.fh21.com.cn/news/mip/760798.html"
       },
       "next": {
-        "type": 2,
         "url": "http://m.dev.fh21.com.cn/news/mip/791271.html"
       },
       "curr": 1,
