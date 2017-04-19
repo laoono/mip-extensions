@@ -10,6 +10,7 @@ mip-fh-paging 用来支持整站分页交互组件
 
 ## 示例
 基本用法
+若添加了force属性，会强制显示分页
 
 ```html
 <style mip-custom>
@@ -41,19 +42,21 @@ mip-fh-paging 用来支持整站分页交互组件
 </style>
 
 <mip-fh-paging class="mip-fh-paging" url="http://m.dev.fh21.com.cn/news/mip/760798_$1.html">
-  <script type="application/json">
-    {
-      "prev": {
-        "url": "http://m.dev.fh21.com.cn/news/mip/760798.html"
-      },
-      "next": {
-        "url": "http://m.dev.fh21.com.cn/news/mip/791271.html"
-      },
-      "curr": 1,
-      "total": 2
-    }
+    <script type="application/json">
+        {
+        "prev": {
+            "url": "http://m.dev.fh21.com.cn/news/mip/760798.html"
+        },
+        "next": {
+            "url": "http://m.dev.fh21.com.cn/news/mip/791271.html"
+        },
+        "curr": 1,
+        "total": 2
+        }
     </script>
 </mip-fh-paging>
+<br>
+<mip-fh-paging class="mip-fh-paging" url="http://m.dev.fh21.com.cn/news/mip/760798_$1.html" force></mip-fh-paging>
 ```
 
 ## 属性

@@ -10,6 +10,7 @@
 define(function (require) {
 
     var customElem = require('customElement').create();
+    var util = require('util');
 
     /**
      * 获取元素绑定的异步属性
@@ -21,12 +22,14 @@ define(function (require) {
         var id = element.id;
         var url = element.getAttribute('url');
         var view = element.getAttribute('view');
+        var force = element.hasAttribute('force') || false;
 
         // 元素参数
         var opt = {
             id: id,
             url: url,
-            view: view || 'detail'
+            view: view || 'detail',
+            force: force
         };
 
         return opt;
@@ -39,18 +42,23 @@ define(function (require) {
     function render() {
         var self = this;
         var element = self.element;
-        var data = getPageData(element);
+        var data = getPageData(element) || {};
+
 
         var opt = getOpt(element);
         var url = opt.url;
         var view = opt.view;
+        var force = opt.force;
 
-        var curr = data.curr;
-        var total = data.total;
+        if (!util.fn.isPlainObject(data) && !force) {
+            return;
+        }
+        var curr = data.curr || 1;
+        var total = data.total || 1;
         var prev = data.prev || {};
         var next = data.next || {};
 
-        if (total === 1) {
+        if (total === 1 && !force) {
             return;
         }
 
@@ -144,11 +152,12 @@ define(function (require) {
      * getPageData 获取分布数据
      *
      * @param {Object} element 组件节点
-     * @return {{}}
+     * @return {null}
      */
     function getPageData(element) {
         var script = element.querySelector('script[type="application/json"]');
-        var data = script ? JSON.parse(script.textContent.toString()) : {};
+        var data = script ? JSON.parse(script.textContent.toString()) : null;
+
         return data;
     }
 
