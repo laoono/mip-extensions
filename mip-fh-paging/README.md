@@ -47,3 +47,9 @@ mip-fh-paging 用来支持整站分页交互组件
 类型：string
 取值范围：detail|list
 
+### force
+
+说明：是否强制输出分页,如果有force属性，无论是否有分页数据，强制渲染分页样式
+必填：否
+类型：Boolean
+
