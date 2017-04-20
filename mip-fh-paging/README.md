@@ -13,33 +13,6 @@ mip-fh-paging 用来支持整站分页交互组件
 若添加了force属性，会强制显示分页
 
 ```html
-<style mip-custom>
-    @media only screen and (min-width: 320px) { html { font-size: 42.66667px; } }
-    
-    @media only screen and (min-width: 360px) { html { font-size: 48px; } }
-    
-    @media only screen and (min-width: 375px) { html { font-size: 50px; } }
-    
-    @media only screen and (min-width: 384px) { html { font-size: 51.2px; } }
-    
-    @media only screen and (min-width: 414px) { html { font-size: 55.2px; } }
-    
-    @media only screen and (min-width: 480px) { html { font-size: 64px; } }
-    
-    @media only screen and (min-width: 640px) { html { font-size: 85.33333px; } }
-    
-    @media only screen and (min-width: 750px) { html { font-size: 100px; } }
-    
-    @media only screen and (max-width: 319px) { html { font-size: 42.53333px; } }
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    #paging {
-        position: relative;
-        height: 50px;
-    }
-</style>
 
 <mip-fh-paging class="mip-fh-paging" url="http://m.dev.fh21.com.cn/news/mip/760798_$1.html">
     <script type="application/json">
