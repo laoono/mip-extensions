@@ -11,7 +11,8 @@ define(function (require) {
 
     // 通过接口获取地区方法
     function getLocation(cb) {
-        cb = (typeof cb === 'function') ? cb : function () { };
+        cb = (typeof cb === 'function') ? cb : function () {
+        };
 
         var url = 'https://partners.fh21.com.cn/ad/api_getarea/';
 
@@ -26,53 +27,53 @@ define(function (require) {
     }
 
     // 主体功能方法
-    function setHtmlLocation(elem, locationsType) {
-        getLocation(function (data) {
+    function setHtmlLocation(elem, data) {
 
-            var len = locationsType.length;
-            var i = 0;
-            var locationType = '';
-            var converse = elem.getAttribute('converse');
-            var locationClass = locationsType.join('-');
-            var converseClass = '';
+        var elemLocationType = elem.getAttribute('location') || '';
+        var locationsType = elemLocationType.split(',') || [];
+        var len = locationsType.length;
+        var i = 0;
+        var locationType = '';
+        var converse = elem.getAttribute('converse');
+        var locationClass = locationsType.join('-');
+        var converseClass = '';
 
-            if (converse !== null) {
-                converseClass = '-' + 'converse';
-            }
+        if (converse !== null) {
+            converseClass = '-' + 'converse';
+        }
 
-            for (i; i < len; i++) {
-                locationType = +(locationsType[i]);
+        for (i; i < len; i++) {
+            locationType = +(locationsType[i]);
 
-                var flag = false;
+            var flag = false;
 
-                // 判断元素是否有浏览器取反
-                if (converse === null) {
-                    if (locationType === data) { // 判断浏览器类型
-                        flag = true;
-                        break;
-                    }
+            // 判断元素是否有浏览器取反
+            if (converse === null) {
+                if (locationType === data) { // 判断浏览器类型
+                    flag = true;
+                    break;
                 }
-                else {
-                    if (locationType === data) {
-                        flag = false;
-                        break;
-                    }
-                    else {
-                        flag = true;
-                    }
-                }
-            }
-
-            if (flag) {
-                // 真 显示元素
-                elem.style.display = 'block';
-                $body.classList.add('v-mip-ck-location-' + locationClass + converseClass);
             }
             else {
-                // 假 移除元素
-                elem.parentNode.removeChild(elem);
+                if (locationType === data) {
+                    flag = false;
+                    break;
+                }
+                else {
+                    flag = true;
+                }
             }
-        });
+        }
+
+        if (flag) {
+            // 真 显示元素
+            elem.classList.add('mip-fh-location--show');
+            $body.classList.add('v-mip-ck-location-' + locationClass + converseClass);
+        }
+        else {
+            // 假 移除元素
+            elem.parentNode.removeChild(elem);
+        }
     }
 
     /**
@@ -86,12 +87,20 @@ define(function (require) {
      * 地区在首屏展示，需要尽快加载
      */
     customElement.prototype.build = function () {
-        var self = this;
+        var $mipFhLocation = document.querySelectorAll('mip-fh-location');
+        var len = $mipFhLocation.length;
+        var num = +$body.getAttribute('fh-location-num') || 0;
+        $body.setAttribute('fh-location-num', String(++num));
 
-        var locationType = self.element.getAttribute('location') || '';
-        var locationsType = locationType.split(',') || [];
+        if (num !== len) {
+            return;
+        }
 
-        setHtmlLocation(self.element, locationsType);
+        getLocation(function (data) {
+            $mipFhLocation.forEach(function (element) {
+                setHtmlLocation(element, data);
+            });
+        });
     };
 
     return customElement;

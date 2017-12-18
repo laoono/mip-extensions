@@ -12,16 +12,20 @@ mip-fh-location 组件说明
 
 ### 基本用法
 ```html
-<style mip-custom>
-    .mip-ck-location{display: none;}
-</style>
-
-<mip-fh-location location="2" class="mip-ck-location">
-    北京地区会显示
+<mip-fh-location location="2" class="mip-fh-location">
+    北京地区会显示-1
 </mip-fh-location>
 
-<mip-fh-location location="2" converse class="mip-ck-location">
-    非北京地区会显示
+<mip-fh-location location="2" class="mip-fh-location">
+    北京地区会显示-2
+</mip-fh-location>
+
+<mip-fh-location location="1" converse class="mip-fh-location">
+    不是上海地区会显示
+</mip-fh-location>
+
+<mip-fh-location location="2" converse class="mip-fh-location">
+    不是北京地区会显示
 </mip-fh-location>
 ```
 
