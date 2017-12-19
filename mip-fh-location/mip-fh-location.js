@@ -15,9 +15,30 @@ define(function (require) {
         };
 
         var url = 'https://partners.fh21.com.cn/ad/api_getarea/';
+        var ipUrl = 'https://ips.fh21.com.cn/getarea';
+        var timeout = 5000;
 
-        fetchJsonp(url, {
-            jsonpCallback: 'jsonp'
+        // 先获取客户端IP
+        fetchJsonp(ipUrl, {
+            jsonpCallback: 'callback',
+            timeout: timeout - 3000
+        }).then(function (res) {
+            return res.json();
+        }).catch(function () {
+            // 异常返回空对象
+            return {};
+        }).then(function (data) {
+            var ip = data.ip;
+
+            if (ip) {
+                url += ('?ip=' + ip);
+            }
+
+            // 根据客户端IP获取省份ID
+            return fetchJsonp(url, {
+                jsonpCallback: 'jsonp',
+                timeout: timeout
+            });
         }).then(function (res) {
             return res.json();
         }).then(function (data) {
@@ -92,6 +113,7 @@ define(function (require) {
         var num = +$body.getAttribute('fh-location-num') || 0;
         $body.setAttribute('fh-location-num', String(++num));
 
+        // 最后一次 解析mip-fh-location 节点才执行请求
         if (num !== len) {
             return;
         }
