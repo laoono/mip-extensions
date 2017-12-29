@@ -6,7 +6,7 @@ mip-fh-location 组件说明
 ----|----
 类型|通用
 支持布局|responsive,fixed-height,fill,container,fixed
-所需脚本|https://mipcache.bdstatic.com/static/v1/mip-fh-location/mip-fh-location.js
+所需脚本|https://mipcache.bdstatic.com/extensions/platform/v1/mip-fh-location/mip-fh-location.js
 
 ## 示例
 
@@ -36,11 +36,11 @@ mip-fh-location 组件说明
 说明：选择地 
 必选项：是  
 类型：字符串  
-取值范围：地区编码:1, 2, 3, 4.... (2 => 北京)，匹配多个浏览器使用,分开
+取值范围：地区编码:1, 2, 3, 4.... (2 => 北京)，匹配多个地域使用,分开(例：location="1,2,3")
 
 ### converse 
 
-说明：排除area属性提供的浏览器环境 
+说明：排除area属性提供的地域环境 
 必选项：否 
 类型：字符串  
 取值范围：converse, true
