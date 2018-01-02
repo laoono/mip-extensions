@@ -46,6 +46,7 @@ define(function (require) {
             cb(data.provinceId);
         });
     }
+    // 通过 src 属性获取内容
     function getHtml(ele, cb) {
         cb = (typeof cb === 'function') ? cb : function () {
         };
