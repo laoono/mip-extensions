@@ -112,7 +112,7 @@ define(function (require) {
             // 真 显示元素
             getHtml(elem, function () {
                 elem.classList.add('mip-fh-location--show');
-                $body.classList.add('v-mip-ck-location-' + locationClass + converseClass);
+                $body.classList.add('view-mip-fh-location-' + locationClass + converseClass);
             });
         }
         else {
